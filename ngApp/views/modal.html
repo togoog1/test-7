@@ -1,0 +1,22 @@
+<div class="modal-header">
+    <h1 class="modal-title">Details:</h1>
+</div>
+<div class="modal-body" ng-cloak>
+    <table class="table">
+        <tr>
+            <th>Make</th>
+            <td>{{modal.make}}</td>
+        </tr>
+        <tr>
+            <th>Full Description</th>
+            <td>{{modal.car.fullDescription}}</td>
+        </tr>
+        <tr>
+            <th>Price</th>
+            <td>{{modal.car.price|currency}}</td>
+        </tr>
+    </table>
+</div>
+<div class="modal-footer">
+    <button class="btn-primary" ng-click="modal.ok()">OK</button>
+</div>

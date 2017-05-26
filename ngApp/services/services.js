@@ -4,8 +4,16 @@ var myapp;
     (function (Services) {
         var CarService = (function () {
             function CarService($resource) {
+                this.$resource = $resource;
                 this.CarResource = $resource('/api/cars/:id');
+                this.MakeResource = $resource('/api/makes');
             }
+            CarService.prototype.getMatchingMakes = function (makeId) {
+                return this.CarResource.query({ id: makeId });
+            };
+            CarService.prototype.getAllMakes = function () {
+                return this.MakeResource.query();
+            };
             CarService.prototype.listCars = function () {
                 return this.CarResource.query();
             };
@@ -16,19 +24,5 @@ var myapp;
         }());
         Services.CarService = CarService;
         angular.module('myapp').service('carService', CarService);
-        var MakeService = (function () {
-            function MakeService($resource) {
-                this.MakeResource = $resource('/api/makes');
-            }
-            MakeService.prototype.getMatchingMakes = function (makeId) {
-                return this.MakeResource.query({ id: makeId });
-            };
-            MakeService.prototype.listAllMakes = function () {
-                return this.MakeResource.query();
-            };
-            return MakeService;
-        }());
-        Services.MakeService = MakeService;
-        angular.module('myapp').service('makeService', MakeService);
     })(Services = myapp.Services || (myapp.Services = {}));
 })(myapp || (myapp = {}));

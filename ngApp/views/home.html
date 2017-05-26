@@ -7,20 +7,20 @@
 
 <label>
     &nbsp; Filter by Make
-    <select ng-model="controller.makeSelection" ng-change="controller.getMatchingMakes()" ng-options="make as make.name for make in controller.makes track by make.id">
-        <option></option>
+    <select ng-model="controller.makeId" ng-change="controller.getMatchingMakes()">
+        <option ng-repeat="m in controller.makes" value="{{m.id}}">{{m.name}}</option>
     </select>
 </label>
 <hr />
 
 
 <table cellspacing="2" cellpadding="2" ng-class="{highlight:doHilight}">
-    <tr ng-repeat="car in controller.cars"
+    <tr ng-repeat="m in controller.matchingMakes"
         ng-class="{highlight:doHilight }"
         ng-mouseenter="highlight=true"
         ng-mouseleave="highlight=false">
         <td>
-            <p>{{car.ShortDescription}} &nbsp;&nbsp;</p>
+            <p>{{m.ShortDescription}} &nbsp;&nbsp;</p>
         </td>
         <td>
             <img ng-src="{{car.imageUrl}}" ng-click="controller.showModal(car.id)" />

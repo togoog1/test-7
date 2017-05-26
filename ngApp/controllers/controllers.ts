@@ -13,15 +13,15 @@ const apiUrl = '/api/cars/search/';
         public matchingMakes;
 
         public getMatchingMakes() {
-          this.matchingMakes = this.makeService.getMatchingMakes(this.makeId);
+          this.matchingMakes = this.carService.getMatchingMakes(this.makeId);
         console.log(this.matchingMakes);
 
         }
 
 
-        constructor(private carService: myapp.Services.CarService, private makeService: myapp.Services.MakeService, private $uibModal: angular.ui.bootstrap.IModalService, public $http) {
+        constructor(private carService: myapp.Services.CarService, private $uibModal: angular.ui.bootstrap.IModalService, public $http) {
             this.cars = this.carService.listCars();
-            this.makes = this.makeService.listAllMakes();
+            this.makes = this.carService.getAllMakes();
             //this.$http.get('/api/cars')
                         //  .then((response) => {
                           //    this.cars = response.data;
@@ -60,7 +60,7 @@ public fetch() {
 
 
 
-
+//, private makeService: myapp.Services.MakeService
 
 
 

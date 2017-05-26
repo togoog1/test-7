@@ -4,17 +4,16 @@ var myapp;
     (function (Controllers) {
         var apiUrl = '/api/cars/search/';
         var HomeController = (function () {
-            function HomeController(carService, makeService, $uibModal, $http) {
+            function HomeController(carService, $uibModal, $http) {
                 this.carService = carService;
-                this.makeService = makeService;
                 this.$uibModal = $uibModal;
                 this.$http = $http;
                 this.selectedMake = 0;
                 this.cars = this.carService.listCars();
-                this.makes = this.makeService.listAllMakes();
+                this.makes = this.carService.getAllMakes();
             }
             HomeController.prototype.getMatchingMakes = function () {
-                this.matchingMakes = this.makeService.getMatchingMakes(this.makeId);
+                this.matchingMakes = this.carService.getMatchingMakes(this.makeId);
                 console.log(this.matchingMakes);
             };
             HomeController.prototype.getCars = function () {

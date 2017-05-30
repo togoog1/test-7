@@ -76,11 +76,19 @@ router.get('/cars/:id', function (req, res, next) {
       res.send(results);
     })
 });
-
+//short description
 router.get('/cars/search/:search', function(req, res, next) {
     let search = req.params['search'];
     let matches = cars.filter((car)=>{
       return car.ShortDescription.indexOf(search) == 0;
+    });
+    res.json(matches);
+});
+//imgage
+router.get('/cars/search/:search', function(req, res, next) {
+    let search = req.params['search'];
+    let matches = cars.filter((car)=>{
+      return car.FullDescription.indexOf(search) == 0;
     });
     res.json(matches);
 });

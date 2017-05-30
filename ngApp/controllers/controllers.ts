@@ -45,43 +45,49 @@ public fetch() {
       //  console.log(res);
      this.cars = res.data;
       });
-
     }
 
 
+
+
+
+
+
+
+      //  export function showModalUI(carId: number, $uibModal: angular.ui.bootstrap.IModalService, cars, makes) {
+
+      //       let car = cars.find(x => x.id == carId);
+            // let make = makes.find(x => x.id == car.carMakeId);
+
+        //modal stuff
+        public showModal(animalName: string) {
+             this.$uibModal.open({
+                 templateUrl: '/ngApp/views/modal.html',
+                 controller: 'DialogController',
+                 controllerAs: 'modal',
+                 resolve: {
+                      animalName: () => animalName
+                 },
+                 size: 'sm'
+             });
+         }
 }
-
-      //  public showModal(carId) {
-
-          //  showModalUI(carId, this.$uibModal, this.cars, this.makes)
-      //  }
-  //  }
+angular.module('myapp').controller('HomeController', HomeController);
 
 
 
 
-//, private makeService: myapp.Services.MakeService
 
 
-
-//modal
-//    class DialogController {
-
-//        public ok() {
-    //        this.$uibModalInstance.close();
-//        }
-
-  //      constructor(public make: string, public car: object, private $uibModalInstance: angular.ui.bootstrap.IModalServiceInstance) { }
-//    }
-//
-//    angular.module('myapp').controller('DialogController', DialogController);
-
-
-//    angular.module('myapp').config(['$qProvider', function ($qProvider) {
-//        $qProvider.errorOnUnhandledRejections(false);
-//    }]);
-
-  //  const apiUrl = '/api/cars/search/';
+//modal service
+class DialogController {
+    public ok() {
+        this.$uibModalInstance.close();
+    }
+    constructor(public animalName: string, private $uibModalInstance: angular.ui.bootstrap.IModalServiceInstance) { }
+}
+//end
+angular.module('myapp').controller('DialogController', DialogController);
 
 
 
@@ -93,28 +99,15 @@ public fetch() {
 
 
 
+
+
+
+
+
+
+//about controller
   export class AboutController {
         public message = 'Hello from the about page!';
    }
-
-
-
-
-    //export function showModalUI(carId: number, $uibModal: angular.ui.bootstrap.IModalService, cars, makes) {
-
-        //let car = cars.find(x => ;;== carId);
-        //let make = makes.find(x => ;;== car.carMakeId);
-
-      //  $uibModal.open({
-    //        templateUrl: '/ngApp/views/modal.html',
-  //          controller: 'DialogController',
-  //          controllerAs: 'modal',
-  //          resolve: {
-  //              car: () => car,
-  //              make: () => make.name
-  //          },
-  //          size: 'lg'
-  //      });
-//    }
-
+//end bracket
 }

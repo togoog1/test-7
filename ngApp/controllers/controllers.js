@@ -30,9 +30,32 @@ var myapp;
                     _this.cars = res.data;
                 });
             };
+            HomeController.prototype.showModal = function (animalName) {
+                this.$uibModal.open({
+                    templateUrl: '/ngApp/views/modal.html',
+                    controller: 'DialogController',
+                    controllerAs: 'modal',
+                    resolve: {
+                        animalName: function () { return animalName; }
+                    },
+                    size: 'sm'
+                });
+            };
             return HomeController;
         }());
         Controllers.HomeController = HomeController;
+        angular.module('myapp').controller('HomeController', HomeController);
+        var DialogController = (function () {
+            function DialogController(animalName, $uibModalInstance) {
+                this.animalName = animalName;
+                this.$uibModalInstance = $uibModalInstance;
+            }
+            DialogController.prototype.ok = function () {
+                this.$uibModalInstance.close();
+            };
+            return DialogController;
+        }());
+        angular.module('myapp').controller('DialogController', DialogController);
         var AboutController = (function () {
             function AboutController() {
                 this.message = 'Hello from the about page!';

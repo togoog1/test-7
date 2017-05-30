@@ -78,5 +78,12 @@ router.get('/cars/search/:search', function (req, res, next) {
     });
     res.json(matches);
 });
+router.get('/cars/search/:search', function (req, res, next) {
+    var search = req.params['search'];
+    var matches = cars.filter(function (car) {
+        return car.FullDescription.indexOf(search) == 0;
+    });
+    res.json(matches);
+});
 ;
 module.exports = router;

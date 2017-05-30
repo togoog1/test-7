@@ -1,12 +1,30 @@
-<label>Search Make </label>
+<label> Search Make </label>
 <input
-        placeholder="Find your car!"
+        placeholder=" Find your car!"
         ng-model="controller.search" type="text"
         ng-model-options="{debounce:1000}"
         ng-change="controller.fetch()"/>
 
+  <p><b>Click on the images for more information or go to the bottom of the page to filter by makes</b></p>
+        <table cellspacing="2" cellpadding="2" ng-class="{highlight:doHilight}">
+            <tr ng-repeat="car in controller.cars"
+                ng-class="{highlight:doHilight }"
+                ng-mouseenter="highlight=true"
+                ng-mouseleave="highlight=false">
+                <td>
+                     <b><p>{{car.ShortDescription}} </p></b>&nbsp;&nbsp;
+                </td>
+                <td>
+                    <img ng-src="{{car.ImageUrl}}" ng-click="controller.showModal(car.id)" />
+                </td>
+            </tr>
+        </table>
+
+
+<br>
+
 <label>
-    &nbsp; Filter by Make
+    &nbsp; <b> Filter by Make</b>
     <select ng-model="controller.makeId" ng-change="controller.getMatchingMakes()">
         <option ng-repeat="m in controller.makes" value="{{m.id}}">{{m.name}}</option>
     </select>
@@ -23,7 +41,7 @@
             <p>{{m.ShortDescription}} &nbsp;&nbsp;</p>
         </td>
         <td>
-            <img ng-src="{{car.imageUrl}}" ng-click="controller.showModal(car.id)" />
+            <img ng-src="{{m.ImageUrl}}" ng-click="controller.showModal(car.id)" />
         </td>
     </tr>
 </table>

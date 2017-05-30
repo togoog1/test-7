@@ -15,7 +15,7 @@
                      <b><p>{{car.ShortDescription}} </p></b>&nbsp;&nbsp;
                 </td>
                 <td>
-                    <img ng-src="{{car.ImageUrl}}" ng-click="controller.showModal(car.id)" />
+                    <img ng-src="{{car.ImageUrl}}" ng-click="controller.showModal(car)" />
                 </td>
             </tr>
         </table>
@@ -26,22 +26,22 @@
 <label>
     &nbsp; <b> Filter by Make</b>
     <select ng-model="controller.makeId" ng-change="controller.getMatchingMakes()">
-        <option ng-repeat="m in controller.makes" value="{{m.id}}">{{m.name}}</option>
+        <option ng-repeat="car in controller.makes" value="{{car.id}}">{{car.name}}</option>
     </select>
 </label>
 <hr />
 
 
 <table cellspacing="2" cellpadding="2" ng-class="{highlight:doHilight}">
-    <tr ng-repeat="m in controller.matchingMakes"
+    <tr ng-repeat="car in controller.matchingMakes"
         ng-class="{highlight:doHilight }"
         ng-mouseenter="highlight=true"
         ng-mouseleave="highlight=false">
         <td>
-            <p>{{m.ShortDescription}} &nbsp;&nbsp;</p>
+            <p>{{car.ShortDescription}} &nbsp;&nbsp;</p>
         </td>
         <td>
-            <img ng-src="{{m.ImageUrl}}" ng-click="controller.showModal(car.id)" />
+            <img ng-src="{{car.ImageUrl}}" ng-click="controller.showModal(car)" />
         </td>
     </tr>
 </table>

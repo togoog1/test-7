@@ -30,13 +30,13 @@ var myapp;
                     _this.cars = res.data;
                 });
             };
-            HomeController.prototype.showModal = function (carId) {
+            HomeController.prototype.showModal = function (car) {
                 this.$uibModal.open({
                     templateUrl: '/ngApp/views/modal.html',
                     controller: 'DialogController',
                     controllerAs: 'modal',
                     resolve: {
-                        carId: function () { return carId; }
+                        car: function () { return car; }
                     },
                     size: 'lg'
                 });
@@ -46,8 +46,8 @@ var myapp;
         Controllers.HomeController = HomeController;
         angular.module('myapp').controller('HomeController', HomeController);
         var DialogController = (function () {
-            function DialogController(carId, $uibModalInstance) {
-                this.carId = carId;
+            function DialogController(car, $uibModalInstance) {
+                this.car = car;
                 this.$uibModalInstance = $uibModalInstance;
             }
             DialogController.prototype.ok = function () {

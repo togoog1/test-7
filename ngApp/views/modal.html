@@ -1,19 +1,26 @@
 <div class="modal-header">
-    <h1 class="modal-title">Details:</h1>
+    <h1 class="modal-title">Car Details</h1>
 </div>
 <div class="modal-body" ng-cloak>
+  <table class="table">
+      <tr>
+          
+          <img ng-src={{modal.car.ImageUrl}}>
+      </tr>
+</table>
+
     <table class="table">
         <tr>
             <th>Make</th>
-            <td>{{modal.ShortDescription}}</td>
+            <td>{{modal.car.ShortDescription}}</td>
         </tr>
         <tr>
             <th>Full Description</th>
-            <td>{{modal.car.fullDescription}}</td>
+            <td>{{modal.car.FullDescription}}</td>
         </tr>
         <tr>
             <th>Price</th>
-            <td>{{modal.car.price}}</td>
+            <td>${{modal.car.Price}}</td>
         </tr>
     </table>
 </div>

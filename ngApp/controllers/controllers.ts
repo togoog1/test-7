@@ -60,13 +60,13 @@ public fetch() {
             // let make = makes.find(x => x.id == car.carMakeId);
 
         //modal stuff
-        public showModal(carId: number) {
+        public showModal(car) {
              this.$uibModal.open({
                  templateUrl: '/ngApp/views/modal.html',
                  controller: 'DialogController',
                  controllerAs: 'modal',
                  resolve: {
-                      carId: () => carId
+                      car: () => car
                  },
                  size: 'lg'
              });
@@ -84,7 +84,7 @@ class DialogController {
     public ok() {
         this.$uibModalInstance.close();
     }
-    constructor(public carId: number, private $uibModalInstance: angular.ui.bootstrap.IModalServiceInstance) { }
+    constructor(public car:number, private $uibModalInstance: angular.ui.bootstrap.IModalServiceInstance) { }
 }
 //end
 angular.module('myapp').controller('DialogController', DialogController);

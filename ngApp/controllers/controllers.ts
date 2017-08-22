@@ -22,10 +22,7 @@ const apiUrl = '/api/cars/search/';
         constructor(private carService: myapp.Services.CarService, private $uibModal: angular.ui.bootstrap.IModalService, public $http) {
             this.cars = this.carService.listCars();
             this.makes = this.carService.getAllMakes();
-            //this.$http.get('/api/cars')
-                        //  .then((response) => {
-                          //    this.cars = response.data;
-                        //  })
+
 
         }
 
@@ -49,17 +46,6 @@ public fetch() {
 
 
 
-
-
-
-
-
-      //  export function showModalUI(carId: number, $uibModal: angular.ui.bootstrap.IModalService, cars, makes) {
-
-      //       let car = cars.find(x => x.id == carId);
-            // let make = makes.find(x => x.id == car.carMakeId);
-
-        //modal stuff
         public showModal(car) {
              this.$uibModal.open({
                  templateUrl: '/ngApp/views/modal.html',
@@ -83,7 +69,7 @@ angular.module('myapp').controller('HomeController', HomeController);
 class DialogController {
     public ok() {
         this.$uibModalInstance.close();
-    }
+}
     constructor(public car:number, private $uibModalInstance: angular.ui.bootstrap.IModalServiceInstance) { }
 }
 //end
